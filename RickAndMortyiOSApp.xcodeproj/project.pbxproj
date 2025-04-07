@@ -6,15 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AD541DF72DA355CE003F54C0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD541DF62DA355CE003F54C0 /* LaunchScreen.xib */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		AD541CB12DA19C10003F54C0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AD541C982DA19C0E003F54C0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AD541C9F2DA19C0E003F54C0;
-			remoteInfo = RickAndMortyiOSApp;
-		};
-		AD541CBB2DA19C10003F54C0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AD541C982DA19C0E003F54C0 /* Project object */;
 			proxyType = 1;
@@ -26,7 +23,7 @@
 /* Begin PBXFileReference section */
 		AD541CA02DA19C0E003F54C0 /* RickAndMortyiOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyiOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD541CB02DA19C10003F54C0 /* RickAndMortyiOSAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyiOSAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AD541CBA2DA19C10003F54C0 /* RickAndMortyiOSAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyiOSAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD541DF62DA355CE003F54C0 /* LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -62,19 +59,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AD541CB72DA19C10003F54C0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		AD541C972DA19C0E003F54C0 = {
 			isa = PBXGroup;
 			children = (
+				AD541DF62DA355CE003F54C0 /* LaunchScreen.xib */,
 				AD541CA22DA19C0E003F54C0 /* RickAndMortyiOSApp */,
 				AD541CB32DA19C10003F54C0 /* RickAndMortyiOSAppTests */,
 				AD541CBD2DA19C10003F54C0 /* RickAndMortyiOSAppUITests */,
@@ -87,7 +78,6 @@
 			children = (
 				AD541CA02DA19C0E003F54C0 /* RickAndMortyiOSApp.app */,
 				AD541CB02DA19C10003F54C0 /* RickAndMortyiOSAppTests.xctest */,
-				AD541CBA2DA19C10003F54C0 /* RickAndMortyiOSAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,29 +130,6 @@
 			productReference = AD541CB02DA19C10003F54C0 /* RickAndMortyiOSAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		AD541CB92DA19C10003F54C0 /* RickAndMortyiOSAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AD541CCA2DA19C10003F54C0 /* Build configuration list for PBXNativeTarget "RickAndMortyiOSAppUITests" */;
-			buildPhases = (
-				AD541CB62DA19C10003F54C0 /* Sources */,
-				AD541CB72DA19C10003F54C0 /* Frameworks */,
-				AD541CB82DA19C10003F54C0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AD541CBC2DA19C10003F54C0 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				AD541CBD2DA19C10003F54C0 /* RickAndMortyiOSAppUITests */,
-			);
-			name = RickAndMortyiOSAppUITests;
-			packageProductDependencies = (
-			);
-			productName = RickAndMortyiOSAppUITests;
-			productReference = AD541CBA2DA19C10003F54C0 /* RickAndMortyiOSAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -177,10 +144,6 @@
 						CreatedOnToolsVersion = 16.2;
 					};
 					AD541CAF2DA19C10003F54C0 = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = AD541C9F2DA19C0E003F54C0;
-					};
-					AD541CB92DA19C10003F54C0 = {
 						CreatedOnToolsVersion = 16.2;
 						TestTargetID = AD541C9F2DA19C0E003F54C0;
 					};
@@ -202,7 +165,6 @@
 			targets = (
 				AD541C9F2DA19C0E003F54C0 /* RickAndMortyiOSApp */,
 				AD541CAF2DA19C10003F54C0 /* RickAndMortyiOSAppTests */,
-				AD541CB92DA19C10003F54C0 /* RickAndMortyiOSAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -212,17 +174,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD541DF72DA355CE003F54C0 /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AD541CAE2DA19C10003F54C0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AD541CB82DA19C10003F54C0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -246,13 +202,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AD541CB62DA19C10003F54C0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -260,11 +209,6 @@
 			isa = PBXTargetDependency;
 			target = AD541C9F2DA19C0E003F54C0 /* RickAndMortyiOSApp */;
 			targetProxy = AD541CB12DA19C10003F54C0 /* PBXContainerItemProxy */;
-		};
-		AD541CBC2DA19C10003F54C0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AD541C9F2DA19C0E003F54C0 /* RickAndMortyiOSApp */;
-			targetProxy = AD541CBB2DA19C10003F54C0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -393,17 +337,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"RickAndMortyiOSApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"RickAndMortyiOSApp/Resources\"";
 				DEVELOPMENT_TEAM = UJ8245Z3MQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = SplashView.swift;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -411,9 +358,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anthonydev.RickAndMortyiOSApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -422,17 +373,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"RickAndMortyiOSApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"RickAndMortyiOSApp/Resources\"";
 				DEVELOPMENT_TEAM = UJ8245Z3MQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = SplashView.swift;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -440,9 +394,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anthonydev.RickAndMortyiOSApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -484,40 +442,6 @@
 			};
 			name = Release;
 		};
-		AD541CCB2DA19C10003F54C0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = UJ8245Z3MQ;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.anthonydev.RickAndMortyiOSAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = RickAndMortyiOSApp;
-			};
-			name = Debug;
-		};
-		AD541CCC2DA19C10003F54C0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = UJ8245Z3MQ;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.anthonydev.RickAndMortyiOSAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = RickAndMortyiOSApp;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -544,15 +468,6 @@
 			buildConfigurations = (
 				AD541CC82DA19C10003F54C0 /* Debug */,
 				AD541CC92DA19C10003F54C0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AD541CCA2DA19C10003F54C0 /* Build configuration list for PBXNativeTarget "RickAndMortyiOSAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AD541CCB2DA19C10003F54C0 /* Debug */,
-				AD541CCC2DA19C10003F54C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
