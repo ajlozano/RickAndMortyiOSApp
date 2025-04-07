@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol RMDataSource {
+    func execute<T: Codable>(_ request: RMRequest, expecting type: T.Type) async throws -> T
+}
+
 /// Primary API service object to get Rick and Morty data
 final class RMAPIService: RMDataSource {
 //    private let cacheManager = RMAPICacheManager()
@@ -42,8 +46,6 @@ final class RMAPIService: RMDataSource {
             throw error
         }
     }
-
-    // MARK: - Private
 
     private func request(from rmRequest: RMRequest) -> URLRequest? {
         guard let url = rmRequest.url else {

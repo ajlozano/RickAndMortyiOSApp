@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SingleLocation: Codable {
+struct SingleLocation: Codable, Hashable {
     let name: String
     let url: String
 }

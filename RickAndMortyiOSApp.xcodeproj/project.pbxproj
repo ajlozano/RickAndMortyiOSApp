@@ -6,10 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		AD541DF72DA355CE003F54C0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD541DF62DA355CE003F54C0 /* LaunchScreen.xib */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		AD541CB12DA19C10003F54C0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -23,7 +19,6 @@
 /* Begin PBXFileReference section */
 		AD541CA02DA19C0E003F54C0 /* RickAndMortyiOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyiOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD541CB02DA19C10003F54C0 /* RickAndMortyiOSAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyiOSAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AD541DF62DA355CE003F54C0 /* LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -65,7 +60,6 @@
 		AD541C972DA19C0E003F54C0 = {
 			isa = PBXGroup;
 			children = (
-				AD541DF62DA355CE003F54C0 /* LaunchScreen.xib */,
 				AD541CA22DA19C0E003F54C0 /* RickAndMortyiOSApp */,
 				AD541CB32DA19C10003F54C0 /* RickAndMortyiOSAppTests */,
 				AD541CBD2DA19C10003F54C0 /* RickAndMortyiOSAppUITests */,
@@ -174,7 +168,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD541DF72DA355CE003F54C0 /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

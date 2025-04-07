@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class RMRepositoryImpl: RMRepository {
+protocol CharactersRepository {
+    func fetchAllCharacters(_ request: RMRequest) async throws -> CharacterList
+}
+
+final class CharactersRepositoryImpl: CharactersRepository {
     private let service: RMAPIService = RMAPIService()
 
     func fetchAllCharacters(_ request: RMRequest) async throws -> CharacterList {

@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol FetchAllCharacters {
+protocol FetchAllCharactersUseCase {
     func execute(_ request: RMRequest) async throws -> CharacterList
 }
 
-final class FetchAllCharactersUseCase: FetchAllCharacters {
-    private let repository: RMRepository
+final class FetchAllCharactersUseCaseImpl: FetchAllCharactersUseCase {
+    private let repository: CharactersRepository
 
-    init(repository: RMRepository) {
+    init(repository: CharactersRepository) {
         self.repository = repository
     }
     
