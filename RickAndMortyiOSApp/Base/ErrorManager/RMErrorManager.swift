@@ -15,6 +15,19 @@ class RMErrorManager: ObservableObject {
         errorMessage = message
     }
     
+    func showError(from error: RMError) {
+        switch error {
+        case .serviceError(let message):
+            errorMessage = message
+        case .decodeError(let forDecodable):
+            errorMessage = forDecodable
+        case .parseError(let message):
+            errorMessage = message
+        case .unknownError(let message):
+            errorMessage = message
+        }
+    }
+    
     func clearError() {
         errorMessage = nil
     }

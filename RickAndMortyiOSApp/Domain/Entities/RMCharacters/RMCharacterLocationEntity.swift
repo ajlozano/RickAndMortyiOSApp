@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RMCharacterLocationEntity {
+struct RMCharacterLocationEntity: Equatable, Hashable {
     var name: String?
     var url: String?
     

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RMCharacterCellView: View {
-    let imageService: ImageService
     let character: RMCharacterEntity
     @State private var image: UIImage?
     
@@ -33,8 +32,8 @@ struct RMCharacterCellView: View {
                 .scaledToFit()
         }
         .task {
-            if let url = URL(string: character.image ?? "") {
-                image = await imageService.loadImage(from: url)
+            if let imageString = character.image, let data = await RMImageCacheManager.shared.loadImage(forKey: imageString) {
+                image = UIImage(data: data)
             }
         }
     }
@@ -59,6 +58,6 @@ struct RMCharacterCellView: View {
         )
     )
     
-    RMCharacterCellView(imageService: ImageServiceImpl(), character: character)
+    RMCharacterCellView(character: character)
 
 }

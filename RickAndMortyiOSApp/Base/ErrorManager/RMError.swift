@@ -13,3 +13,5 @@ enum RMError: Error {
     case parseError(message: String)
     case unknownError(message: String)
 }
+
+

@@ -13,10 +13,9 @@ struct RickAndMortyiOSAppApp: App {
         WindowGroup {
             let dependencies = AppDependenciesBuilder.build()
                         
-            CharacterListView(
-                viewModel: CharacterListViewModel(
-                    useCase: dependencies.charactersUseCase,
-                    imageService: dependencies.imageService
+            RMCharacterListView(
+                viewModel: RMCharacterListViewModel(
+                    charactersListUseCase: dependencies.charactersUseCase
                 )
             )
             .environment(\.appDependencies, dependencies)

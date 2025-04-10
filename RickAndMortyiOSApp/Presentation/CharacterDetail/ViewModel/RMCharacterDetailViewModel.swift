@@ -10,28 +10,51 @@ import SwiftUI
 @MainActor
 final class RMCharacterDetailViewModel: ObservableObject {
     @Published var errorManager: RMErrorManager = RMErrorManager()
-
+    @Published var profileImage: UIImage?
+    @Published var loadingStatus: RMLoadingStatus = .stop
+    @Published var model: RMCharacterDetailModel = RMCharacterDetailModel()
+    var inputModel: RMCharacterEntity?
     
-    init(charactersListUseCase: RMCharactersUseCase, imageService: ImageService) {
-        self.charactersUseCase = charactersListUseCase
-        self.imageService = imageService
+    var episodesUseCase: RMEpisodesUseCase
+    
+    init(episodesUseCase: RMEpisodesUseCase, inputModel: RMCharacterEntity) {
+        self.episodesUseCase = episodesUseCase
+        self.inputModel = inputModel
         
-        fetchData(withSearchFilter: nil)
+        fetchData()
     }
+}
+
+// MARK: Fetch Data Methods
+
+extension RMCharacterDetailViewModel {
     
-    func fetchData(withSearchFilter searchFilter: String?) {
+    func fetchData() {
+
+        let episodesIDs = inputModel?.episode?.compactMap({ $0.split(separator: "/").last.map(String.init) ?? "0" })
         
         loadingStatus = .start
-        let useCaseParameters = RMCharactersUseCaseParameters(searchFilter: searchFilter)
+        let useCaseParameters = RMEpisodesUseCaseParameters(episodesIDs: episodesIDs)
         Task {
             do {
-                let result = try await charactersUseCase.execute(params: useCaseParameters)
+                let result = try await episodesUseCase.execute(params: useCaseParameters)
                 loadingStatus = .stop
                 createModel(for: result)
             } catch {
                 loadingStatus = .stop
-                createEmptyStateModel(forError: error)
+                createErrorModel(error)
             }
+        }
+    }
+    
+    func loadImage() {
+        guard let imagePath = model.imagePath else { return }
+        
+        Task {
+            let imageData = await RMImageCacheManager.shared.loadImage(forKey: imagePath)
+            guard let imageData = imageData else { return }
+            
+            model.image = UIImage(data: imageData)
         }
     }
 }
@@ -40,35 +63,40 @@ final class RMCharacterDetailViewModel: ObservableObject {
 
 extension RMCharacterDetailViewModel {
    
-    /// This method inflates a model of the view for data binding with the viewController
+    /// This method inflates a model of the view
     /// - Parameters:
-    ///   - entity: Entity model result of the Character Detail request.
-    ///   - params: Parameters model for the  Character Detail request.
-    func createModel(withEntity entity: RMCharacterDetailEntity, forParameters params: RMCharacterDetailUseCaseParameters) {
+    ///   - entity: Entity model result of the Episodes request.
+    func createModel(for entity: RMEpisodesListEntity) {
         guard let imagePath = inputModel?.image,
               let status = inputModel?.status,
               let gender = inputModel?.gender?.rawValue,
               let species = inputModel?.species,
-              let origin = entity.locations?.filter({ $0.id == Int(params.originID) ?? 0 }).first,
-              let location = entity.locations?.filter({ $0.id == Int(params.locationID) ?? 0 }).first,
-              let episodes = entity.episodes else {
+              let origin = inputModel?.origin?.name,
+              let location = inputModel?.location?.name,
+              let episodes = entity.results else {
             
-            self.error.value = RMError.unknownError(message: "Could not get detail model in RMCharacterDetailViewModel")
+            errorManager.showError("Could not get detail model in RMCharacterDetailViewModel")
             return
         }
+
+        model.imagePath = imagePath
+        model.status = status
+        model.gender = gender
+        model.species = species
+        model.origin = origin
+        model.location = location
+        model.episodes = episodes
         
-        self.model.value = RMCharacterDetailModel(imagePath: imagePath,
-                                                  status: status,
-                                                  gender: gender,
-                                                  species: species,
-                                                  origin: origin,
-                                                  location: location,
-                                                  episodes: episodes)
+        loadImage()
     }
 
     /// This method inflates an error model for data binding with the viewController
     /// - Parameter error: Value of the error occurred
-    func createErrorModel(_ error: RMError) {
-        self.error.value = error
+    func createErrorModel(_ error: Error) {
+        if let error = error as? RMError {
+            errorManager.showError(from: error)
+        } else {
+            errorManager.showError(error.localizedDescription)
+        }
     }
 }

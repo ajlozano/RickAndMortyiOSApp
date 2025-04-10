@@ -41,7 +41,6 @@ final class RMCharacterListViewModel: ObservableObject {
         }
     }
     
-    /// Check if paginate more character is needed
     func fetchMoreDataIfNeeded(currentCharacter: RMCharacterEntity) {
         if loadingStatus == .start { return }
         

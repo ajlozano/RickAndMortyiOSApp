@@ -25,7 +25,7 @@ final class DefaultRMEpisodesUseCase: RMEpisodesUseCase {
     private var paginationUrl: String?
     private var hasFetchAllEpisodes: Bool = false
     
-    init(repository: RMEpisodesRepository = DefaultRMEpisodesRepository()) {
+    init(repository: RMEpisodesRepository) {
         self.repository = repository
     }
 }

@@ -11,12 +11,10 @@ struct AppDependenciesBuilder {
     static func build() -> AppDependencies {
         let charactersRepository = DefaultRMCharactersRepository()
         let episodesRepository = DefaultRMEpisodesRepository()
-        let imageService = ImageServiceImpl()
 
         return AppDependencies(
             charactersUseCase: DefaultRMCharactersUseCase(repository: charactersRepository),
-            episodesUseCase: DefaultRMEpisodesUseCase(repository: episodesRepository),
-            imageService: imageService
+            episodesUseCase: DefaultRMEpisodesUseCase(repository: episodesRepository)
         )
     }
 }

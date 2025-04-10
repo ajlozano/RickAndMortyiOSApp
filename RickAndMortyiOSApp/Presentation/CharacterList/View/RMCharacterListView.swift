@@ -7,83 +7,39 @@
 
 import SwiftUI
 
-struct CharacterListView: View {
-    @StateObject var viewModel: CharacterListViewModel
+struct RMCharacterListView: View {
+    @Environment(\.appDependencies) var appDependencies: AppDependencies
     @State private var navigationPath = NavigationPath()
-    @State private var headerOffset: CGFloat = 0
-    
+    @StateObject var viewModel: RMCharacterListViewModel
+   
     var body: some View {
         NavigationStack(path: $navigationPath) {
             ScrollView {
-                VStack {
-                    GeometryReader { proxy in
-                        Color.clear
-                            .preference(key: HeaderOffsetKey.self,
-                                        value: proxy.frame(in: .named("scroll")).minY)
-                    }
-                    .frame(height: 0)
-                    .onPreferenceChange(HeaderOffsetKey.self) { value in
-                        headerOffset = value
-                    }
-                    
-                    LazyVGrid(columns: viewModel.columns) {
-                        ForEach(viewModel.characters, id: \.id) { character in
-                            RMCharacterCellView(imageService: viewModel.imageService, character: character)
-                            .onTapGesture {
-                                navigationPath.append(character)
-                            }
-                            .onAppear {
-                                viewModel.loadMoreCharactersIfNeeded(currentCharacter: character)
-                            }
+                LazyVGrid(columns: viewModel.columns) {
+                    ForEach(Array(viewModel.model.characters.enumerated()), id: \.offset) { index, character in
+                        RMCharacterCellView(character: character)
+                        .onTapGesture {
+                            navigationPath.append(character)
                         }
-                        
-                        if viewModel.isLoadingMoreCharacters {
-                            HStack {
-                                Spacer()
-                                ProgressView()
-                                Spacer()
-                            }
+                        .onAppear {
+                            viewModel.fetchMoreDataIfNeeded(currentCharacter: character)
                         }
                     }
-                    .padding(.top, viewModel.maxHeaderHeight)
-                    .padding(.horizontal)
                 }
+                .padding(.top, 16)
+                .padding(.horizontal)
             }
-            .coordinateSpace(name: "scroll")
-            .overlay(
-                headerView
-                    .frame(height: calculatedHeaderHeight)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .background(.ultraThinMaterial)
-                , alignment: .top
-            )
-            .navigationDestination(for: Character.self) { character in
-                CharacterDetailView(imageService: viewModel.imageService, character: character)
+            .navigationDestination(for: RMCharacterEntity.self) { character in
+                RMCharacterDetailView(
+                    viewModel: RMCharacterDetailViewModel(
+                        episodesUseCase: appDependencies.episodesUseCase,
+                        inputModel: character
+                    )
+                )
             }
-            .navigationBarHidden(true)
+            .navigationBarHidden(false)
             .navigationTitle("Characters")
         }
-        .handleError(with: viewModel.errorManager)
-    }
-    
-    var calculatedHeaderHeight: CGFloat {
-        let offset = -headerOffset
-        return max(viewModel.minHeaderHeight, viewModel.maxHeaderHeight - offset)
-    }
-    
-    var headerView: some View {
-        let collapseRange = viewModel.maxHeaderHeight - viewModel.minHeaderHeight
-        // Solo calculamos el progreso si headerOffset es negativo (se ha hecho scroll hacia arriba)
-        let speedFactor: CGFloat = 0.5
-        let progress = headerOffset < 0 ? min(1, max(0, (-headerOffset) / collapseRange * speedFactor)) : 0
-        let scale = 1 - (1 - viewModel.minScale) * progress
-        
-        return Text("Rick And Morty")
-            .font(.system(size: 50))
-            .bold()
-            .scaleEffect(scale, anchor: .center)
-            .padding()
-            .frame(maxWidth: .infinity, alignment: .center)
     }
 }
 

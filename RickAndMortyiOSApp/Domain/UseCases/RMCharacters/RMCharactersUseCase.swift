@@ -29,7 +29,7 @@ final class DefaultRMCharactersUseCase: RMCharactersUseCase {
     private var paginationUrl: String?
     private var hasFetchAllCharacters: Bool = false
     
-    init(repository: RMCharactersRepository = DefaultRMCharactersRepository()) {
+    init(repository: RMCharactersRepository) {
         self.repository = repository
     }
 }

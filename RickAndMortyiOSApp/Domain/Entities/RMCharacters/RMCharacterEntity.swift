@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RMCharacterEntity {
+struct RMCharacterEntity: Equatable, Hashable {
     /// The id of the character.
     var id: Int?
     /// The name of the character.

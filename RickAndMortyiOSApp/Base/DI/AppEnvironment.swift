@@ -10,7 +10,6 @@ import SwiftUI
 struct AppDependencies {
     let charactersUseCase: RMCharactersUseCase
     let episodesUseCase: RMEpisodesUseCase
-    let imageService: ImageService
 }
 
 private struct AppDependenciesKey: EnvironmentKey {
