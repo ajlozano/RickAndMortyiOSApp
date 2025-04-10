@@ -7,11 +7,9 @@
 
 import SwiftUI
 
-struct CharacterProfileImageView: View {
-    let imageService: ImageService
-    let status: RMCharacterStatusEntity
-    let imageUrl: String
-    @State private var image: UIImage?
+struct RMCharacterProfileImageView: View {
+    @Binding var status: RMCharacterStatusEntity
+    @Binding var image: UIImage?
     
     private var statusColor: Color {
         switch status {
@@ -46,8 +44,6 @@ struct CharacterProfileImageView: View {
                         .frame(height: 143)
                     .clipShape(Circle())
                 )
-            
-            // Pequeño label para el estatus sobre el borde inferior
             Text(status.rawValue)
                 .font(.system(size: 20)).bold()
                 .foregroundColor(.white)
@@ -59,14 +55,18 @@ struct CharacterProfileImageView: View {
         }
         .frame(height: 180)
         .padding(.top, 16)
-        .task {
-            if let url = URL(string: imageUrl) {
-                image = await imageService.loadImage(from: url)
-            }
-        }
+    }
+}
+
+struct CharacterProfileImageViewContainer: View {
+    @State var status: RMCharacterStatusEntity
+    @State var image: UIImage?
+    
+    var body: some View {
+        RMCharacterProfileImageView(status: $status, image: $image)
     }
 }
 
 #Preview {
-    CharacterProfileImageView(imageService: ImageServiceImpl(), status: .Dead, imageUrl: "https://rickandmortyapi.com/api/character/avatar/2.jpeg")
+    CharacterProfileImageViewContainer(status: .Dead, image: UIImage(named: "cover"))
 }

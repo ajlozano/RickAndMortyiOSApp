@@ -7,16 +7,10 @@
 
 import SwiftUI
 
-struct CharacterDetailTypeView: View {
+struct RMCharacterDetailTypeView: View {
     let type: String
-    let value: String
-    let secondValue: String
-    
-    init(type: String, value: String, secondValue: String = "") {
-        self.type = type
-        self.value = value
-        self.secondValue = secondValue
-    }
+    @Binding var value: String
+    @Binding var secondValue: String
     
     var body: some View {
         VStack(alignment: .center) {
@@ -41,6 +35,16 @@ struct CharacterDetailTypeView: View {
     }
 }
 
+struct CharacterDetailTypeViewContainer: View {
+    let type: String
+    @State var value: String
+    @State var secondValue: String
+    
+    var body: some View {
+        RMCharacterDetailTypeView(type: type, value: $value, secondValue: $secondValue)
+    }
+}
+
 #Preview {
-    CharacterDetailTypeView(type: "ORIGIN / LOCATION", value: "Earth", secondValue: "Citadel of Ricks")
+    CharacterDetailTypeViewContainer(type: "ORIGIN / LOCATION", value: "Earth", secondValue: "Citadel of Ricks")
 }
