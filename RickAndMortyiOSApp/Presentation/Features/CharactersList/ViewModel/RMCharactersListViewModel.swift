@@ -7,8 +7,10 @@
 
 import SwiftUI
 
+// MARK: RMCharactersListViewModel
+
 @MainActor
-final class RMCharacterListViewModel: ObservableObject {
+final class RMCharactersListViewModel: ObservableObject {
     @Published var model: RMCharactersListModel = RMCharactersListModel()
     @Published var showEmptyStateError: Bool = false
     @Published var loadingStatus: RMLoadingStatus = .stop
@@ -16,7 +18,7 @@ final class RMCharacterListViewModel: ObservableObject {
     @Published var isInitialLoading = true
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
-
+    
     let charactersUseCase: RMCharactersUseCase
     
     init(charactersListUseCase: RMCharactersUseCase) {
@@ -24,10 +26,14 @@ final class RMCharacterListViewModel: ObservableObject {
         
         fetchData(withSearchFilter: nil)
     }
-    
+}
+
+// MARK: Fetch Data Methods
+
+extension RMCharactersListViewModel {
     func fetchData(withSearchFilter searchFilter: String?) {
-        
         loadingStatus = .start
+        
         let useCaseParameters = RMCharactersUseCaseParameters(searchFilter: searchFilter)
         Task {
             do {
@@ -46,16 +52,16 @@ final class RMCharacterListViewModel: ObservableObject {
         
         let thresholdIndex = model.characters.index(model.characters.endIndex, offsetBy: -1)
         if model.characters.firstIndex(where: { $0.id == currentCharacter.id }) == thresholdIndex {
-            self.fetchData(withSearchFilter: nil)
+            fetchData(withSearchFilter: nil)
         }
     }
 }
 
 // MARK: Mannage Output Models
 
-extension RMCharacterListViewModel {
+extension RMCharactersListViewModel {
     
-    /// This method inflates a model of the view for data binding with the viewController
+    /// This method inflates a model of the view
     /// - Parameter entity: Entity model result of the Characters request.
     func createModel(for entity: RMCharactersListEntity) {
         guard let newCharacters = entity.results else {
@@ -71,7 +77,7 @@ extension RMCharacterListViewModel {
         model.isFetchDataFinished = isFetchDataFinished
     }
     
-    /// This method inflates an error model for data binding with the viewController
+    /// This method inflates an error model
     /// - Parameter error: Value of the error occurred
     func createEmptyStateModel(forError: Error) {
         model = RMCharactersListModel(characters: [], isFetchDataFinished: true)

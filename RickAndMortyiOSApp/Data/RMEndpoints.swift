@@ -10,10 +10,9 @@ import Foundation
 /// Enpoints enumeration for get RM API data
 /// - character: endpoint to retrieve all the data of the characters
 /// - episode: endpoint to retrieve all the data of the episodes
-@frozen enum RMEndpoint: String {
+enum RMEndpoint: String {
     case character
     case episode
-    case location
 }
 
 // MARK: RMEndpoints
@@ -32,7 +31,6 @@ struct RMEndpoints {
 // MARK: Generate URL Formatted
 
 extension RMEndpoints {
-    
     /// this method generates a valid endpoint string with the necesary paramas formatted
     /// - Parameters:
     ///   - endpoint: The tyoe of the request acording to RMEndpoint.
@@ -48,7 +46,7 @@ extension RMEndpoints {
                                       episodesFilter: [String]? = nil) -> String {
         
         var url = self.baseURL + endpoint.rawValue
-
+        
         if let searchFilter = searchFilter {
             url += String(format: nameKey, searchFilter)
         }
@@ -62,12 +60,12 @@ extension RMEndpoints {
             let locations = locationsFilter.joined(separator: ",")
             url += String(format: locationsKey, locations)
         }
-                
+        
         if let episodesFilter = episodesFilter {
             let episodes = episodesFilter.joined(separator: ",")
             url += String(format: episodesKey, episodes)
         }
-                
+        
         return url
     }
 }

@@ -7,14 +7,20 @@
 
 import SwiftUI
 
+// MARK: AppDependencies struct
+
 struct AppDependencies {
     let charactersUseCase: RMCharactersUseCase
     let episodesUseCase: RMEpisodesUseCase
 }
 
+// MARK: AppDependencies default key
+
 private struct AppDependenciesKey: EnvironmentKey {
     static let defaultValue = AppDependenciesBuilder.build()
 }
+
+// MARK: AppDependencies key values
 
 extension EnvironmentValues {
     var appDependencies: AppDependencies {

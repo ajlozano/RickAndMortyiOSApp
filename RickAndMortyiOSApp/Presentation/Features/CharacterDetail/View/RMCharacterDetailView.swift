@@ -14,18 +14,18 @@ struct RMCharacterDetailView: View {
         VStack(spacing: 24) {
             ZStack {
                 RoundedRectangle(cornerRadius: 4)
-                        .fill(Color.white)
-                        .shadow(color: Color.black.opacity(0.5), radius: 3, x: 0, y: 0)
-                        .ignoresSafeArea()
+                    .fill(Color.white)
+                    .shadow(color: Color.black.opacity(0.5), radius: 3, x: 0, y: 0)
+                    .ignoresSafeArea()
                 VStack {
                     RMCharacterProfileImageView(status: $viewModel.model.status, image: $viewModel.model.image)
                     VStack {
                         HStack(spacing: 16) {
-                            RMCharacterDetailTypeView(type: "GENDER", value: $viewModel.model.gender, secondValue: .constant(""))
-                            RMCharacterDetailTypeView(type: "SPECIES", value: $viewModel.model.species, secondValue: .constant(""))
+                            RMCharacterDetailTypeView(type: "characters_gender_Title".localized, value: $viewModel.model.gender, secondValue: .constant(""))
+                            RMCharacterDetailTypeView(type: "characters_species_Title".localized, value: $viewModel.model.species, secondValue: .constant(""))
                         }
                         
-                        RMCharacterDetailTypeView(type: "ORIGIN / LOCATION", value: $viewModel.model.origin, secondValue: $viewModel.model.location)
+                        RMCharacterDetailTypeView(type: "characters_OriginLocation_Title".localized, value: $viewModel.model.origin, secondValue: $viewModel.model.location)
                             .padding(.top)
                     }
                     .padding(.horizontal)
@@ -35,7 +35,7 @@ struct RMCharacterDetailView: View {
             .padding(.bottom, -20)
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("Featured Episodes")
+                    Text("episodes_Featured_Title".localized)
                         .font(.headline)
                         .foregroundColor(Color(.darkGray))
                         .padding(.top, 20)
@@ -43,8 +43,8 @@ struct RMCharacterDetailView: View {
                     
                     ForEach(Array(viewModel.model.episodes.enumerated()), id: \.offset) { index, episode in
                         RMEpisodeCellView(episode: episode)
-                        .padding(.vertical, 4)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.vertical, 4)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
                 .padding(.horizontal)
@@ -54,7 +54,8 @@ struct RMCharacterDetailView: View {
             .frame(maxWidth: .infinity)
         }
         .padding(.bottom, 16)
-        .navigationTitle(viewModel.model.name)
+        .navigationBarHidden(false)
+        .navigationTitle(viewModel.inputModel?.name ?? "")
         .navigationBarTitleDisplayMode(.inline)
         .handleError(with: viewModel.errorManager)
     }
@@ -78,6 +79,7 @@ struct RMCharacterDetailView: View {
         )
     )
     
-    RMCharacterDetailView(viewModel: RMCharacterDetailViewModel(episodesUseCase: DefaultRMEpisodesUseCase(repository: DefaultRMEpisodesRepository()), inputModel: character))
-
+    RMCharacterDetailView(viewModel: RMCharacterDetailViewModel(
+        episodesUseCase: DefaultRMEpisodesUseCase(
+            repository: DefaultRMEpisodesRepository()), inputModel: character))
 }

@@ -6,15 +6,29 @@
 //
 
 import SwiftUI
-import Combine
+
+// MARK: RMError enum
+
+enum RMError: Error {
+    case serviceError(message: String)
+    case decodeError(forDecodable: String)
+    case parseError(message: String)
+    case unknownError(message: String)
+}
+
+// MARK: RMErrorManager class
 
 class RMErrorManager: ObservableObject {
     @Published var errorMessage: String? = nil
     
+    /// Method that set errorMessage to show error snackbar
+    /// - Parameter message: error message
     func showError(_ message: String) {
         errorMessage = message
     }
     
+    /// Method that set errorMessage depending on the received error, to show error snackbar
+    /// - Parameter message: RMError object
     func showError(from error: RMError) {
         switch error {
         case .serviceError(let message):
@@ -28,10 +42,13 @@ class RMErrorManager: ObservableObject {
         }
     }
     
+    /// Method that clear errorMessage and hide snackbar
     func clearError() {
         errorMessage = nil
     }
 }
+
+// MARK: RMErrorSnackbar component view
 
 struct RMErrorSnackbar: View {
     let message: String
@@ -48,6 +65,8 @@ struct RMErrorSnackbar: View {
             .animation(.easeInOut, value: message)
     }
 }
+
+// MARK: RMErrorHandler view modifier
 
 struct RMErrorHandler: ViewModifier {
     @StateObject var errorManager: RMErrorManager = RMErrorManager()

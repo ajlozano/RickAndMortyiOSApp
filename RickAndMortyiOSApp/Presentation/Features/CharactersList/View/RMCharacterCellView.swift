@@ -18,8 +18,7 @@ struct RMCharacterCellView: View {
                     Image(uiImage: img)
                         .resizable()
                 } else {
-                    Color.green.opacity(0.2)
-                    ProgressView()
+                    RMCharacterLoadingCell()
                 }
             }
             .cornerRadius(8)
@@ -40,7 +39,6 @@ struct RMCharacterCellView: View {
 }
 
 #Preview {
-    
     let character = RMCharacterEntity(
         decodable: RMCharacterDecodable(
             id: 2,
@@ -51,7 +49,7 @@ struct RMCharacterCellView: View {
             gender: "Male",
             origin: RMCharacterLocationDecodable(name: "", url: ""),
             location: RMCharacterLocationDecodable(name: "", url: ""),
-            image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+            image: "",
             episode: [],
             url: "",
             created: ""
@@ -59,5 +57,4 @@ struct RMCharacterCellView: View {
     )
     
     RMCharacterCellView(character: character)
-
 }

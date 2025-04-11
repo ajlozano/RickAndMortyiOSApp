@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  RickAndMortyiOSApp
+
+  Created by Toni Lozano Fernández on 11/4/25.
+  
+*/
+
+//MARK: Characters Localizables
+
+"characters_Navigation_Title" = "Characters";
+"characters_status_Title" = "STATUS";
+"characters_gender_Title" = "GENDER";
+"characters_species_Title" = "SPECIES";
+"characters_OriginLocation_Title" = "ORIGIN / LOCATION";
+"characters_Featured_Title" = "Featured characters";
+
+//MARK: Episodes Localizables
+
+"episodes_Featured_Title" = "Featured episodes";
+
+// MARK: Common Localizables
+
+"empty_state_message" = "Theres nothing here";

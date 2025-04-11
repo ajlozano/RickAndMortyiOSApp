@@ -42,7 +42,7 @@ struct RMCharacterProfileImageView: View {
                         }
                     }
                         .frame(height: 143)
-                    .clipShape(Circle())
+                        .clipShape(Circle())
                 )
             Text(status.rawValue)
                 .font(.system(size: 20)).bold()

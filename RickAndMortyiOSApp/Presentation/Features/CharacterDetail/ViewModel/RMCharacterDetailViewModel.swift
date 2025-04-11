@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: RMCharacterDetailViewModel
+
 @MainActor
 final class RMCharacterDetailViewModel: ObservableObject {
     @Published var errorManager: RMErrorManager = RMErrorManager()
@@ -28,9 +30,7 @@ final class RMCharacterDetailViewModel: ObservableObject {
 // MARK: Fetch Data Methods
 
 extension RMCharacterDetailViewModel {
-    
     func fetchData() {
-
         let episodesIDs = inputModel?.episode?.compactMap({ $0.split(separator: "/").last.map(String.init) ?? "0" })
         
         loadingStatus = .start
@@ -62,7 +62,6 @@ extension RMCharacterDetailViewModel {
 // MARK: Create Models
 
 extension RMCharacterDetailViewModel {
-   
     /// This method inflates a model of the view
     /// - Parameters:
     ///   - entity: Entity model result of the Episodes request.
@@ -78,7 +77,7 @@ extension RMCharacterDetailViewModel {
             errorManager.showError("Could not get detail model in RMCharacterDetailViewModel")
             return
         }
-
+        
         model.imagePath = imagePath
         model.status = status
         model.gender = gender
@@ -89,8 +88,8 @@ extension RMCharacterDetailViewModel {
         
         loadImage()
     }
-
-    /// This method inflates an error model for data binding with the viewController
+    
+    /// This method inflates an error model
     /// - Parameter error: Value of the error occurred
     func createErrorModel(_ error: Error) {
         if let error = error as? RMError {

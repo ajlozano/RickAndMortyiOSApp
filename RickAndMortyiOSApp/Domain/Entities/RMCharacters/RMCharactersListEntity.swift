@@ -19,4 +19,9 @@ struct RMCharactersListEntity {
             RMCharacterEntity(decodable: characterDecodable)
         })
     }
+    
+    init(info: RMRequestInfoEntity? = nil, results: [RMCharacterEntity] = []) {
+        self.info = info
+        self.results = results
+    }
 }
